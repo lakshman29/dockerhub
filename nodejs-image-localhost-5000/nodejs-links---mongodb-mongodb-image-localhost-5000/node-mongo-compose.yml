@@ -1,0 +1,7 @@
+
+nodejs:
+ image: localhost:5000/nodejs
+ links:
+  - mongodb
+mongodb:
+ image: localhost:5000/mongodb
