@@ -1,0 +1,16 @@
+#!/bin/sh
+
+
+echo"post-commit started"
+
+echo "post-commit finished"
+
+repo=git remote -v | head -n1 | awk '{print $2}' | sed -e 's,.*:\(.*/\)\?,,' -e 's/\.git$//'
+branch=git branch | sed -n -e 's/^\* \(.*\)/\1/p'
+echo "$repo";
+echo "$branch"
+sudo docker login -p rHF4iZPp6I390BRKG2bHneFDJLmqB8ml7aM02Ne7a2Y -e unused -u unused 192.168.94.118:5000
+sudo docker build -t 192.168.94.118:5000/alti/$repo:$branch .
+#sudo docker tag myimage 192.168.94.118:5000/alti/$repo:$branch
+sudo docker push 192.168.94.118:5000/alti/$repo:$branch
+echo "end"
