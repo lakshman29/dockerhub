@@ -1,6 +1,7 @@
 
 
-FROM alpine:3.2
+FROM alpine:3.3
+
 
 
 RUN apk add --update-cache bash curl jq && \
